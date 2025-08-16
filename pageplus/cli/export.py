@@ -56,7 +56,7 @@ def fulltext(
         logging.info(f'Writing text file to: {text_output_path}')
 
         # Extract and write full text to the output file
-        with open(text_output_path, 'w') as fout:
+        with open(text_output_path, 'w', encoding="utf-8") as fout:
             extracted_text = Page(xml_file).extract_fulltext(reading_order=ro,
                                                              reading_order_mode=ro_mode.value,
                                                              dehyphenate=dehyphenate)
@@ -133,7 +133,7 @@ def dsv(
             else outputdir / filename
         filepath.parent.mkdir(parents=True, exist_ok=True)
         logging.info('Wrote separated value file to output directory: ' + str(filepath))
-        with open(filepath, 'w') as tsvfile:
+        with open(filepath, 'w', encoding="utf-8") as tsvfile:
             #csv writer to write in tsv file
             tsv_writer = csv.writer(tsvfile, delimiter=delimiter)
             #write header in tsv file
